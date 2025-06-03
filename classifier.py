@@ -20,7 +20,7 @@ def classify_image(image):
     image_paths = list(images)
     embeddings = np.load("embeddings.npy")
     global disease_list
-    disease_list = sorted(list(set(["_".join(im.split("\\")[2].split("_")[:-1]) for im in images])))
+    disease_list = sorted(list(set(["_".join(im.split("/")[2].split("_")[:-1]) for im in images])))
 
 
     
@@ -61,7 +61,7 @@ def embed_image(image):
     return embedding
     
 def name_to_class(name):
-  return disease_list.index("_".join(name.split("\\")[2].split("_")[:-1]))
+  return disease_list.index("_".join(name.split("/")[2].split("_")[:-1]))
 
 
 def classify_or_flag_unknown(image, X_train, knn):
